@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -77,3 +77,52 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Runtest Detox
+
+## Step 1: Environment setup
+
+-- Docs : https://wix.github.io/Detox/docs/next/introduction/environment-setup
+
+## Step 2: Device configs
+
+-- Add device available to
+
+```bash
+# IOS
+xcrun simctl list devicetypes
+
+   simulator: {
+     type: 'ios.simulator',
+     device: {
+      type: 'iPhone 12',
+     },
+   },
+```
+
+```bash
+# Android
+emulator -list-avds
+
+   emulator: {
+      type: 'android.emulator',
+      device: {
+        avdName: 'Pixel_3a_API_30_x86',
+      },
+    },
+```
+
+-- Docs : https://wix.github.io/Detox/docs/next/introduction/project-setup
+
+## Step 3: Build the app
+
+IOS (debug) :detox build --configuration ios.sim.debug
+Android (debug) : detox build --configuration android.emu.debug
+
+## Step 4: Run test with cmd
+
+npm start
+IOS : npx detox test -c ios.sim.debug
+Android : detox test --configuration android.emu.debug
+
+-- Docs : https://wix.github.io/Detox/docs/next/introduction/your-first-test
